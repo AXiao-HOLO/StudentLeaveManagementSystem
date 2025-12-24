@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.student.mapper.LeaveApplicationMapper">
+
+    <resultMap id="BaseResultMap" type="com.student.domain.LeaveApplication">
+            <id property="id" column="id" />
+            <result property="studentId" column="student_id" />
+            <result property="startTime" column="start_time" />
+            <result property="endTime" column="end_time" />
+            <result property="leaveType" column="leave_type" />
+            <result property="reason" column="reason" />
+            <result property="status" column="status" />
+            <result property="createTime" column="create_time" />
+            <result property="updateTime" column="update_time" />
+            <result property="approveRemark" column="approve_remark" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,student_id,start_time,end_time,leave_type,reason,
+        status,create_time,update_time,approve_remark
+    </sql>
+</mapper>
