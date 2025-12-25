@@ -1,11 +1,14 @@
 package com.student.controller;
 
+import com.student.anno.LogOperation;
 import com.student.domain.*;
 import com.student.domain.queryParam.CourseQueryParam;
 import com.student.service.CourseService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -44,6 +47,7 @@ public class CourseController {
       * @param course 课程信息
       * @return 更新结果
       */
+    @LogOperation
     @PutMapping
     public Result update(@RequestBody Course course) {
         log.info("更新课程：{}", course);
@@ -61,6 +65,7 @@ public class CourseController {
       * @param id 课程id
       * @return 删除结果
       */
+    @LogOperation
     @DeleteMapping
     public Result delete(Integer id) {
         log.info("删除课程：{}", id);
@@ -78,6 +83,7 @@ public class CourseController {
       * @param course 课程信息
       * @return 添加结果
       */
+    @LogOperation
     @PostMapping
     public Result add(@RequestBody Course course) {
         log.info("添加课程：{}", course);
@@ -105,5 +111,10 @@ public class CourseController {
             return Result.error("查询失败");
         }
     }
+
+    public Result getNames(){
+        return Result.success(courseService.list().stream().map(Course::getCourseName).toList());
+    }
+
 
 }

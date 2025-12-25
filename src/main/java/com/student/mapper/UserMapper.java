@@ -17,6 +17,8 @@ import java.util.List;
 public interface UserMapper extends BaseMapper<User> {
 
     List<User> list(UserQueryParam param);
+
+    User getUsername(User user);
 }
 
 

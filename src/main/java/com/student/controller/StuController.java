@@ -1,5 +1,6 @@
 package com.student.controller;
 
+import com.student.anno.LogOperation;
 import com.student.domain.PageResult;
 import com.student.domain.Result;
 import com.student.domain.queryParam.StuQueryParam;
@@ -53,6 +54,7 @@ public class StuController {
      * @param ids 学生id列表
      * @return 删除结果
      */
+    @LogOperation
     @DeleteMapping
     public Result delete(@RequestParam List<Integer> ids) {
         log.info("删除学生：{}", ids);
@@ -65,6 +67,7 @@ public class StuController {
      * @param student 学生对象
      * @return 保存结果
      */
+     @LogOperation
     @PostMapping
     public Result save(@RequestBody Student student) {
        log.info("保存学生：{}", student);
@@ -91,10 +94,16 @@ public class StuController {
      * @param student 学生对象
      * @return 更新结果
      */
+    @LogOperation
     @PutMapping
     public Result update(@RequestBody Student student) {
         log.info("更新学生信息：{}", student);
         studentService.saveOrUpdate(student);
         return Result.success();
     }
+
+    public List<String> getNames() {
+        return studentService.list().stream().map(Student::getName).toList();
+    }
+
 }

@@ -70,7 +70,9 @@ public class LeaveApplication {
      */
     @TableField(exist = false)
     private String studentName;
+    @TableField(exist = false)
     private String studentNo;
+    @TableField(exist = false)
     private String className;
 
     @Override

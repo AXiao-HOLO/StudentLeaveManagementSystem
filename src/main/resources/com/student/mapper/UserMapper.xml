@@ -37,4 +37,7 @@
             </if>
         </where>
     </select>
+    <select id="getUsername" resultType="com.student.domain.User">
+        select * from user where username = #{username}
+    </select>
 </mapper>

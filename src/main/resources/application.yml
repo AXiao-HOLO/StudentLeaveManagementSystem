@@ -4,6 +4,17 @@ spring:
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
+  mail:
+    host: smtp.163.com
+    port: 465
+    protocol: smtp
+    username: nfwpp79gbl51km@163.com
+    password: GVfWhaExL8qb9nBj
+    default-encoding: UTF-8
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.ssl.enable: true
+      mail.smtp.ssl.required: true
 
 mybatis-plus:
   configuration:
@@ -23,3 +34,4 @@ pagehelper:
 logging:
   level:
     org.springframework.jdbc.support.JdbcTransactionManager: debug
+

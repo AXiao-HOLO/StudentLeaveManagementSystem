@@ -1,5 +1,6 @@
 package com.student.controller;
 
+import com.student.anno.LogOperation;
 import com.student.domain.Clazz;
 import com.student.domain.Result;
 import com.student.service.ClazzService;
@@ -22,10 +23,11 @@ public class ClazzController {
     @Autowired
     private ClazzService clazzService;
 
-      /**
-       * 班级列表
-       * @return 班级列表
-       */
+    /**
+     * 班级列表
+     *
+     * @return 班级列表
+     */
     @GetMapping
     public Result list() {
         log.info("班级列表");
@@ -33,11 +35,13 @@ public class ClazzController {
         return Result.success(list);
     }
 
-     /**
-      * 删除班级
-      * @param id 班级id
-      * @return 删除结果
-      */
+    /**
+     * 删除班级
+     *
+     * @param id 班级id
+     * @return 删除结果
+     */
+    @LogOperation
     @DeleteMapping
     public Result delete(Integer id) {
         log.info("删除班级：{}", id);
@@ -49,11 +53,13 @@ public class ClazzController {
         }
     }
 
-     /**
-      * 新增班级
-      * @param clazz 班级信息
-      * @return 新增结果
-      */
+    /**
+     * 新增班级
+     *
+     * @param clazz 班级信息
+     * @return 新增结果
+     */
+    @LogOperation
     @PostMapping
     public Result save(@RequestBody Clazz clazz) {
         log.info("新增班级：{}", clazz);
@@ -65,11 +71,13 @@ public class ClazzController {
         }
     }
 
-     /**
-      * 更新班级
-      * @param clazz 班级信息
-      * @return 更新结果
-      */
+    /**
+     * 更新班级
+     *
+     * @param clazz 班级信息
+     * @return 更新结果
+     */
+    @LogOperation
     @PutMapping
     public Result update(@RequestBody Clazz clazz) {
         log.info("更新班级：{}", clazz);
@@ -81,11 +89,12 @@ public class ClazzController {
         }
     }
 
-     /**
-      * 根据id查询班级
-      * @param id 班级id
-      * @return 班级信息
-      */
+    /**
+     * 根据id查询班级
+     *
+     * @param id 班级id
+     * @return 班级信息
+     */
     @GetMapping("/{id}")
     public Result getById(@PathVariable Integer id) {
         log.info("根据id查询班级：{}", id);
@@ -97,5 +106,8 @@ public class ClazzController {
         }
     }
 
+    public Result getNames() {
+        return Result.success(clazzService.list().stream().map(Clazz::getClassName).toList());
+    }
 
 }

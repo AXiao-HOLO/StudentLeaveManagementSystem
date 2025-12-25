@@ -1,5 +1,6 @@
 package com.student.service;
 
+import com.student.domain.LoginInfo;
 import com.student.domain.PageResult;
 import com.student.domain.User;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -19,4 +20,8 @@ public interface UserService extends IService<User> {
      * @return 分页结果
      */
     PageResult page(UserQueryParam param);
+
+    LoginInfo login(User user);
+
+    Integer getTypeById(Integer id);
 }

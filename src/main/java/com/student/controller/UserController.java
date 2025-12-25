@@ -1,5 +1,6 @@
 package com.student.controller;
 
+import com.student.anno.LogOperation;
 import com.student.domain.PageResult;
 import com.student.domain.Result;
 import com.student.domain.User;
@@ -38,6 +39,7 @@ public class UserController {
      * @param user 用户信息
      * @return 操作结果
      */
+    @LogOperation
     @PostMapping
     public Result add(@RequestBody User user) {
         // 校验用户类型是否合法
@@ -56,6 +58,7 @@ public class UserController {
      * @param id 用户ID
      * @return 操作结果
      */
+    @LogOperation
     @DeleteMapping
     public Result delete(Integer id) {
         log.info("删除用户，参数：{}", id);
@@ -69,6 +72,7 @@ public class UserController {
      * @param user 用户信息
      * @return 操作结果
      */
+    @LogOperation
     @PutMapping
     public Result update(@RequestBody User user) {
         log.info("更新用户，参数：{}", user);
