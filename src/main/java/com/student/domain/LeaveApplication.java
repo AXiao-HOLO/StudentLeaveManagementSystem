@@ -65,6 +65,14 @@ public class LeaveApplication {
      */
     private String approveRemark;
 
+     /**
+     * 学生姓名
+     */
+    @TableField(exist = false)
+    private String studentName;
+    private String studentNo;
+    private String className;
+
     @Override
     public boolean equals(Object that) {
         if (this == that) {

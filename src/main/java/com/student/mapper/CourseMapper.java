@@ -2,7 +2,10 @@ package com.student.mapper;
 
 import com.student.domain.Course;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.student.domain.queryParam.CourseQueryParam;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
 * @author AXiao
@@ -13,6 +16,7 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface CourseMapper extends BaseMapper<Course> {
 
+    List<Course> list(CourseQueryParam param);
 }
 
 

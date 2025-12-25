@@ -38,7 +38,7 @@ public class ClazzController {
       * @param id 班级id
       * @return 删除结果
       */
-    @RequestMapping
+    @DeleteMapping
     public Result delete(Integer id) {
         log.info("删除班级：{}", id);
         boolean b = clazzService.removeById(id);
@@ -55,7 +55,7 @@ public class ClazzController {
       * @return 新增结果
       */
     @PostMapping
-    public Result save(Clazz clazz) {
+    public Result save(@RequestBody Clazz clazz) {
         log.info("新增班级：{}", clazz);
         boolean b = clazzService.saveOrUpdate(clazz);
         if (b) {
@@ -71,7 +71,7 @@ public class ClazzController {
       * @return 更新结果
       */
     @PutMapping
-    public Result update(Clazz clazz) {
+    public Result update(@RequestBody Clazz clazz) {
         log.info("更新班级：{}", clazz);
         boolean b = clazzService.saveOrUpdate(clazz);
         if (b) {
@@ -87,7 +87,7 @@ public class ClazzController {
       * @return 班级信息
       */
     @GetMapping("/{id}")
-    public Result getById(Integer id) {
+    public Result getById(@PathVariable Integer id) {
         log.info("根据id查询班级：{}", id);
         Clazz clazz = clazzService.getById(id);
         if (clazz != null) {

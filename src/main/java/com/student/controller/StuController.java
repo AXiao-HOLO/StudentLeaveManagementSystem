@@ -2,7 +2,7 @@ package com.student.controller;
 
 import com.student.domain.PageResult;
 import com.student.domain.Result;
-import com.student.domain.StuQueryParam;
+import com.student.domain.queryParam.StuQueryParam;
 import com.student.domain.Student;
 import com.student.service.StudentService;
 import lombok.extern.slf4j.Slf4j;
@@ -79,7 +79,7 @@ public class StuController {
      * @return 学生信息
      */
     @GetMapping("/{id}")
-    public Result getInfo(@RequestParam Integer id) {
+    public Result getInfo(@PathVariable Integer id) {
         log.info("获取学生信息：{}", id);
         Student student = studentService.getInfo(id);
         return Result.success(student);

@@ -1,7 +1,9 @@
 package com.student.service;
 
+import com.student.domain.PageResult;
 import com.student.domain.User;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.student.domain.queryParam.UserQueryParam;
 
 /**
 * @author AXiao
@@ -10,4 +12,11 @@ import com.baomidou.mybatisplus.extension.service.IService;
 */
 public interface UserService extends IService<User> {
 
+    /**
+     * 分页查询用户
+     *
+     * @param param 分页查询参数
+     * @return 分页结果
+     */
+    PageResult page(UserQueryParam param);
 }

@@ -2,7 +2,10 @@ package com.student.mapper;
 
 import com.student.domain.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.student.domain.queryParam.UserQueryParam;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
 * @author AXiao
@@ -13,6 +16,7 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface UserMapper extends BaseMapper<User> {
 
+    List<User> list(UserQueryParam param);
 }
 
 

@@ -1,4 +1,4 @@
-package com.student.domain;
+package com.student.domain.queryParam;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,40 +9,26 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class StuQueryParam {
+public class CourseQueryParam {
     private Integer page = 1; //页码
     private Integer pageSize = 10; //每页展示记录数
+
     private Long id;
 
     /**
-     * 学号
+     * 课程名称
      */
-    private String studentNo;
+    private String courseName;
 
     /**
-     * 学生姓名
+     * 课程编码
      */
-    private String name;
+    private String courseCode;
 
     /**
-     * 所属班级ID
+     * 学分
      */
-    private Long classId;
-
-    /**
-     * 性别：1-男，2-女
-     */
-    private Integer gender;
-
-    /**
-     * 联系电话
-     */
-    private String phone;
-
-    /**
-     * 学生邮箱
-     */
-    private String email;
+    private Double credit;
 
     /**
      * 创建时间
@@ -53,6 +39,4 @@ public class StuQueryParam {
      * 更新时间
      */
     private LocalDateTime updateTime;
-
-    private String className;
 }

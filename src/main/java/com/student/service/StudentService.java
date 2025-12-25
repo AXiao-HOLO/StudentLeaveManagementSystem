@@ -3,7 +3,7 @@ package com.student.service;
 import com.student.domain.PageResult;
 import com.student.domain.Student;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.student.domain.StuQueryParam;
+import com.student.domain.queryParam.StuQueryParam;
 
 import java.util.List;
 

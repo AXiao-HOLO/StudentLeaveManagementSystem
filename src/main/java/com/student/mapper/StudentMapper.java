@@ -2,7 +2,7 @@ package com.student.mapper;
 
 import com.student.domain.Student;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.student.domain.StuQueryParam;
+import com.student.domain.queryParam.StuQueryParam;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

@@ -5,7 +5,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.student.domain.PageResult;
 import com.student.domain.Student;
-import com.student.domain.StuQueryParam;
+import com.student.domain.queryParam.StuQueryParam;
 import com.student.service.StudentService;
 import com.student.mapper.StudentMapper;
 import org.springframework.beans.factory.annotation.Autowired;
