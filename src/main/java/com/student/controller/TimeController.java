@@ -18,9 +18,10 @@ public class TimeController {
      * 获取所有课程表
      * @return
      */
-    @RequestMapping("/list")
-    public Result list() {
-        return Result.success(timetableService.list());
+    @GetMapping("/class/{classId}")
+    public Result list(@PathVariable Integer classId) {
+        log.info("根据班级ID查询课表信息：{}", classId);
+        return Result.success(timetableService.getInfoByClassId(classId));
     }
 
      /**
@@ -43,6 +44,19 @@ public class TimeController {
     @DeleteMapping
     public Result deleteById(Integer id) {
         return Result.success(timetableService.removeById(id));
+    }
+
+    // 更新课程表
+    @LogOperation
+    @PutMapping
+    public Result update(@RequestBody Timetable timetable) {
+        return Result.success(timetableService.saveOrUpdate(timetable));
+    }
+
+    // 查询课程表详情
+    @GetMapping("/{id}")
+    public Result getById(@PathVariable Integer id) {
+        return Result.success(timetableService.getById(id));
     }
 
 }

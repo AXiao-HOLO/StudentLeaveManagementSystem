@@ -60,6 +60,12 @@ public class Timetable {
      */
     private LocalDateTime updateTime;
 
+     /**
+     * 课程名称
+     */
+    @TableField(exist = false)
+    private String courseName;
+
     @Override
     public boolean equals(Object that) {
         if (this == that) {

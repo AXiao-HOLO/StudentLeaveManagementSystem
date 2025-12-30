@@ -69,7 +69,7 @@
                 and la.approve_remark like concat('%',#{approveRemark},'%')
             </if>
         </where>
-        <!-- 按请假类型排序 -->
-        order by la.leave_type asc
+        <!-- 按批阅状态排序 -->
+        order by la.status asc
     </select>
 </mapper>

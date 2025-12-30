@@ -1,5 +1,6 @@
 package com.student.service.impl;
 
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -42,6 +43,11 @@ public class StudentServiceImpl extends ServiceImpl<StudentMapper, Student>
      @Override
     public Student getInfo(Integer id) {
         return studentMapper.selectById(id);
+    }
+
+    @Override
+    public Student getInfoByName(String stuName) {
+        return studentMapper.selectOne(Wrappers.<Student>lambdaQuery().eq(Student::getName, stuName));
     }
 
 }

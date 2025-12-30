@@ -2,6 +2,9 @@ package com.student.service;
 
 import com.student.domain.Timetable;
 import com.baomidou.mybatisplus.extension.service.IService;
+import java.util.List;
+
+
 
 /**
 * @author AXiao
@@ -10,4 +13,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
 */
 public interface TimetableService extends IService<Timetable> {
 
+
+    List<Timetable> getInfoByClassId(Integer classId);
 }

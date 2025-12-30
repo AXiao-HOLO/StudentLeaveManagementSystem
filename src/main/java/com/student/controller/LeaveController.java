@@ -58,11 +58,11 @@ public class LeaveController {
      * @return 保存结果
      */
     @LogOperation
-    @PostMapping
+    @PutMapping
     public Result save(@RequestBody LeaveApplication leaveApplication) {
         log.info("保存请假申请：{}", leaveApplication);
         // 如果请假申请的审批状态发生改变，发送邮件通知学生
-        if (!Objects.equals(leaveApplication.getStatus(), leaveApplicationService.getById(leaveApplication.getId()).getStatus())) {
+        /*if (!Objects.equals(leaveApplication.getStatus(), leaveApplicationService.getById(leaveApplication.getId()).getStatus())) {
             try {
                 String status = leaveApplication.getStatus() == 0 ? "待批阅" : leaveApplication.getStatus() == 1 ? "已通过" : "已驳回";
                 EmailUtil.sendSimpleMail(mailSender, "nfwpp79gbl51km@163.com", studentService.getById(leaveApplication.getStudentId()).getEmail(),
@@ -70,7 +70,7 @@ public class LeaveController {
             } catch (Exception e) {
                 log.error("发送邮件失败", e);
             }
-        }
+        }*/
         leaveApplicationService.saveOrUpdate(leaveApplication);
         return Result.success();
     }
@@ -80,11 +80,19 @@ public class LeaveController {
      * @param id 请假申请id
      * @return 请假申请
      */
-    @LogOperation
     @GetMapping("/{id}")
     public Result getById(@PathVariable Integer id) {
         log.info("根据id查询请假申请：{}", id);
         LeaveApplication leaveApplication = leaveApplicationService.getById(id);
         return Result.success(leaveApplication);
+    }
+
+    // 新增请假申请
+    @LogOperation
+    @PostMapping
+    public Result apply(@RequestBody LeaveApplication leaveApplication) {
+        log.info("新增请假申请：{}", leaveApplication);
+        leaveApplicationService.saveOrUpdate(leaveApplication);
+        return Result.success();
     }
 }

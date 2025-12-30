@@ -55,6 +55,9 @@ public class User {
      */
     private LocalDateTime updateTime;
 
+    @TableField(exist = false)
+    private String studentNo;
+
     @Override
     public boolean equals(Object that) {
         if (this == that) {

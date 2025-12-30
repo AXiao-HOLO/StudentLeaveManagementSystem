@@ -24,4 +24,6 @@ public interface UserService extends IService<User> {
     LoginInfo login(User user);
 
     Integer getTypeById(Integer id);
+
+    User selectByUsername(String username);
 }

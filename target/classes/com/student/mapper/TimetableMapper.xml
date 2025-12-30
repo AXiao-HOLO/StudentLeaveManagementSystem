@@ -20,4 +20,11 @@
         id,class_id,course_id,week_day,class_period,week_range,
         classroom,create_time,update_time
     </sql>
+    <select id="getInfoByClassId" resultType="com.student.domain.Timetable">
+        <!-- 根据班级ID查询课表信息，如果关联了课表ID，需要同时查询出课程名称 -->
+        select t.*,c.course_name as course_name
+        from timetable t
+        left join course c on t.course_id = c.id
+        where t.class_id = #{classId}
+    </select>
 </mapper>

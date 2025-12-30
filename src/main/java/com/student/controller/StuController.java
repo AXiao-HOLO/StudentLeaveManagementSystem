@@ -25,16 +25,6 @@ public class StuController {
     private StudentService studentService;
 
     /**
-     * 学生列表
-     *
-     * @return 学生列表
-    @GetMapping
-    public Result list() {
-        log.info("学生列表");
-        List<Student> list = studentService.list();
-        return Result.success(list);
-    }*/
-    /**
      * 分页查询学生
      *
      * @param param 分页查询参数
@@ -61,21 +51,22 @@ public class StuController {
         studentService.deleteByIds(ids);
         return Result.success();
     }
-     /**
+
+    /**
      * 保存学生
      *
      * @param student 学生对象
      * @return 保存结果
      */
-     @LogOperation
+    @LogOperation
     @PostMapping
     public Result save(@RequestBody Student student) {
-       log.info("保存学生：{}", student);
-       studentService.saveOrUpdate(student);
-       return Result.success(student);
+        log.info("保存学生：{}", student);
+        studentService.saveOrUpdate(student);
+        return Result.success(student);
     }
 
-     /**
+    /**
      * 获取学生信息
      *
      * @param id 学生id
@@ -88,7 +79,7 @@ public class StuController {
         return Result.success(student);
     }
 
-     /**
+    /**
      * 更新学生信息
      *
      * @param student 学生对象
@@ -102,8 +93,13 @@ public class StuController {
         return Result.success();
     }
 
-    public List<String> getNames() {
-        return studentService.list().stream().map(Student::getName).toList();
+    // 查询所有学生信息
+    @GetMapping("/all")
+    public Result getAll() {
+        log.info("查询所有学生信息");
+        List<Student> list = studentService.list();
+        return Result.success(list);
     }
+
 
 }

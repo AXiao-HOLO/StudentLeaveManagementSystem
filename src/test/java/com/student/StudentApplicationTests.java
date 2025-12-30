@@ -1,9 +1,12 @@
 package com.student;
 
+import com.student.controller.UserController;
 import com.student.domain.Clazz;
 import com.student.domain.User;
 import com.student.mapper.ClazzMapper;
+import com.student.mapper.UserMapper;
 import com.student.service.ClazzService;
+import com.student.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -31,6 +34,20 @@ class StudentApplicationTests {
         message.setText("测试邮件内容");
         // 发送邮件
         mailSender.send(message);
+    }
+
+    @Autowired
+    private UserController userController;
+
+    @Test
+    public void addUserService() {
+        User user = new User();
+        user.setUsername("student001");
+        user.setName("学生001");
+        user.setPhone("13800000000");
+        user.setPassword("123456");
+        user.setUserType(1);
+        userController.add(user);
     }
 
 }

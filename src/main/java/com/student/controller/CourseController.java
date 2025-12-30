@@ -112,9 +112,11 @@ public class CourseController {
         }
     }
 
-    public Result getNames(){
-        return Result.success(courseService.list().stream().map(Course::getCourseName).toList());
+    // 查询所有课程
+    @GetMapping("/all")
+    public Result getAll() {
+        log.info("查询所有课程");
+        List<Course> list = courseService.list();
+        return Result.success(list);
     }
-
-
 }

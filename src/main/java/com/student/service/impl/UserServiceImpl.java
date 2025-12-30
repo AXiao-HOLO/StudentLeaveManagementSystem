@@ -1,5 +1,6 @@
 package com.student.service.impl;
 
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -60,6 +61,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
     @Override
     public Integer getTypeById(Integer id) {
         return userMapper.selectById(id).getUserType();
+    }
+
+    @Override
+    public User selectByUsername(String username) {
+        return userMapper.selectOne(Wrappers.<User>lambdaQuery().eq(User::getUsername, username));
     }
 }
 

@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 /**
 * @author AXiao
 * @description 针对表【timetable(课表主表)】的数据库操作Mapper
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Mapper
 public interface TimetableMapper extends BaseMapper<Timetable> {
 
+    List<Timetable> getInfoByClassId(Integer classId);
 }
 
 

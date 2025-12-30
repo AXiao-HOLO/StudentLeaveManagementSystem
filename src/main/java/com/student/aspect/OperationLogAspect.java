@@ -20,7 +20,7 @@ public class OperationLogAspect {
     private OperateLogMapper operateLogMapper;
 
     // 环绕通知
-    @Around("@annotation(log)")
+    //@Around("@annotation(log)")
     public Object around(ProceedingJoinPoint joinPoint, LogOperation log) throws Throwable {
         // 记录开始时间
         long startTime = System.currentTimeMillis();

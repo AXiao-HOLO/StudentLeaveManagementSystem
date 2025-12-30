@@ -31,4 +31,6 @@ public interface StudentService extends IService<Student> {
     boolean deleteByIds(List<Integer> ids);
 
     Student getInfo(Integer id);
+
+    Student getInfoByName(String stuName);
 }

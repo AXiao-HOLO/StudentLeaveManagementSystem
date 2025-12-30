@@ -1,5 +1,6 @@
 package com.student.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.student.anno.LogOperation;
 import com.student.domain.Clazz;
 import com.student.domain.Result;
@@ -8,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -81,6 +83,7 @@ public class ClazzController {
     @PutMapping
     public Result update(@RequestBody Clazz clazz) {
         log.info("更新班级：{}", clazz);
+        clazz.setUpdateTime(LocalDateTime.now());
         boolean b = clazzService.saveOrUpdate(clazz);
         if (b) {
             return Result.success();
@@ -104,10 +107,6 @@ public class ClazzController {
         } else {
             return Result.error("查询失败");
         }
-    }
-
-    public Result getNames() {
-        return Result.success(clazzService.list().stream().map(Clazz::getClassName).toList());
     }
 
 }
