@@ -55,14 +55,14 @@ public class UserController {
     /**
      * 删除用户
      *
-     * @param id 用户ID
-     * @return 操作结果
+     * @param ids 用户id列表
+     * @return 删除结果
      */
     @LogOperation
     @DeleteMapping
-    public Result delete(Integer id) {
-        log.info("删除用户，参数：{}", id);
-        userService.removeById(id);
+    public Result delete(@RequestParam List<Integer> ids) {
+        log.info("删除用户：{}", ids);
+        userService.removeByIds(ids);
         return Result.success();
     }
 

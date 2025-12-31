@@ -62,7 +62,7 @@ public class LeaveController {
     public Result save(@RequestBody LeaveApplication leaveApplication) {
         log.info("保存请假申请：{}", leaveApplication);
         // 如果请假申请的审批状态发生改变，发送邮件通知学生
-        /*if (!Objects.equals(leaveApplication.getStatus(), leaveApplicationService.getById(leaveApplication.getId()).getStatus())) {
+        if (!Objects.equals(leaveApplication.getStatus(), leaveApplicationService.getById(leaveApplication.getId()).getStatus())) {
             try {
                 String status = leaveApplication.getStatus() == 0 ? "待批阅" : leaveApplication.getStatus() == 1 ? "已通过" : "已驳回";
                 EmailUtil.sendSimpleMail(mailSender, "nfwpp79gbl51km@163.com", studentService.getById(leaveApplication.getStudentId()).getEmail(),
@@ -70,7 +70,7 @@ public class LeaveController {
             } catch (Exception e) {
                 log.error("发送邮件失败", e);
             }
-        }*/
+        }
         leaveApplicationService.saveOrUpdate(leaveApplication);
         return Result.success();
     }
