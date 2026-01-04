@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -89,6 +90,7 @@ public class StuController {
     @PutMapping
     public Result update(@RequestBody Student student) {
         log.info("更新学生信息：{}", student);
+        student.setUpdateTime(LocalDateTime.now());
         studentService.saveOrUpdate(student);
         return Result.success();
     }

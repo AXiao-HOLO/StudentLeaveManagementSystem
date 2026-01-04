@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
@@ -61,6 +62,7 @@ public class LeaveController {
     @PutMapping
     public Result save(@RequestBody LeaveApplication leaveApplication) {
         log.info("保存请假申请：{}", leaveApplication);
+        leaveApplication.setCreateTime(LocalDateTime.now());
         // 如果请假申请的审批状态发生改变，发送邮件通知学生
         if (!Objects.equals(leaveApplication.getStatus(), leaveApplicationService.getById(leaveApplication.getId()).getStatus())) {
             try {

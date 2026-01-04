@@ -12,6 +12,7 @@ import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Slf4j
@@ -76,6 +77,7 @@ public class UserController {
     @PutMapping
     public Result update(@RequestBody User user) {
         log.info("更新用户，参数：{}", user);
+        user.setUpdateTime(LocalDateTime.now());
         // 校验用户类型是否合法
         if (user.getUserType() == null || (user.getUserType() != 1 && user.getUserType() != 2 && user.getUserType() != 3)) {
             return Result.error("用户类型必须为1（学生）或2（辅导员）或3（管理员）");

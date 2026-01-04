@@ -8,6 +8,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+
 @RestController
 @Slf4j
 @RequestMapping("/timetable")
@@ -50,6 +52,8 @@ public class TimeController {
     @LogOperation
     @PutMapping
     public Result update(@RequestBody Timetable timetable) {
+        log.info("更新课程表信息：{}", timetable);
+        timetable.setUpdateTime(LocalDateTime.now());
         return Result.success(timetableService.saveOrUpdate(timetable));
     }
 

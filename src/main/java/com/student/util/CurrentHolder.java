@@ -2,8 +2,11 @@ package com.student.util;
 
 public class CurrentHolder {
 
+    // ThreadLocal: 线程本地变量
+    // 线程本地变量, 用于存储当前登录用户的id
     private static final ThreadLocal<Integer> CURRENT_LOCAL = new ThreadLocal<>();
 
+    // 线程本地变量, 用于存储当前登录用户的类型
     private static final ThreadLocal<String> CURRENT_TYPE_LOCAL = new ThreadLocal<>();
 
     public static void setCurrentId(Integer userId) {

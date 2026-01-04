@@ -13,6 +13,8 @@ import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+
 @Slf4j
 @RestController
 @RequestMapping("/login")
@@ -64,6 +66,7 @@ public class LoginController {
     @PostMapping("/reset-password")
     public Result resetPassword(@RequestBody User user) {
         log.info("用户 {} 来重置密码啦", user.getUsername());
+        user.setUpdateTime(LocalDateTime.now());
         // 检查用户名是否存在
         if(userService.getOne(Wrappers.<User>lambdaQuery().eq(User::getUsername, user.getUsername())) == null){
             return Result.error("用户名不存在~");

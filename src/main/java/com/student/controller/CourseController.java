@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Slf4j
@@ -16,18 +17,6 @@ import java.util.List;
 public class CourseController {
     @Autowired
     private CourseService courseService;
-
-/*    *//**
-     * 课程列表
-     *
-     * @return 课程列表
-     *//*
-    @GetMapping
-    public Result list() {
-        log.info("课程列表");
-        List<Course> list = courseService.list();
-        return Result.success(list);
-    }*/
 
     /**
      * 分页查询课程
@@ -51,6 +40,7 @@ public class CourseController {
     @PutMapping
     public Result update(@RequestBody Course course) {
         log.info("更新课程：{}", course);
+        course.setUpdateTime(LocalDateTime.now());
         boolean b = courseService.updateById(course);
         if (b) {
             return Result.success();

@@ -29,7 +29,6 @@ public class TokenFilter implements Filter {
 
         //1. 获取请求的url地址
         String uri = request.getRequestURI(); // /employee/login
-        //String url = request.getRequestURL().toString(); // http://localhost:8080/employee/login
 
         //2. 判断是否是登录请求, 如果url地址中包含 login, 则说明是登录请求, 放行
         if (uri.contains("login")) {
